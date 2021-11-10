@@ -35,7 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val VIDEO1 =
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp42"
+            "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov"
+
+        //            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp42"
         const val VIDEO2 =
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         const val VIDEO3 =

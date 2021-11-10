@@ -1,15 +1,7 @@
 package com.a6.pip
 
 import android.app.PictureInPictureParams
-import android.content.Intent
-import android.content.res.Configuration
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.util.Rational
-import android.view.View
-import android.widget.MediaController
 import androidx.appcompat.app.AppCompatActivity
 import com.a6.pip.databinding.ActivityPipBinding
 
@@ -26,17 +18,19 @@ class PipActivity : AppCompatActivity() {
         binding = ActivityPipBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setVideoView(intent)
+        //     setVideoView(intent)
 
-        pictureInPictureParams
+        supportFragmentManager
+            .beginTransaction()
+            .replace(
+                R.id.activity_base_container,
+                PipFragment.newInstance(MainActivity.VIDEO11)
+            )
+            .commitNow()
 
-        binding.pipButtom.setOnClickListener {
-            pictureInPictureMode()
-        }
-
-        Log.d("TAGG", videoUrl)
     }
 
+    /*
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -46,21 +40,6 @@ class PipActivity : AppCompatActivity() {
 
             }
 
-        }
-    }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        if (intent != null) {
-            setVideoView(intent)
-        }
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if (binding.videoView.isPlaying) {
-            binding.videoView.stopPlayback()
         }
     }
 
@@ -79,7 +58,6 @@ class PipActivity : AppCompatActivity() {
             binding.pipButtom.visibility = View.VISIBLE
             supportActionBar?.show()
         }
-
     }
 
     private fun setVideoView(intent: Intent) {
@@ -114,6 +92,17 @@ class PipActivity : AppCompatActivity() {
         } else {
             binding.pipButtom.visibility = View.GONE
         }
+    }
+
+
+ */
+
+    fun hideActionBar() {
+        supportActionBar?.hide()
+    }
+
+    fun showActionBar() {
+        supportActionBar?.show()
     }
 
     companion object {
